@@ -27,6 +27,50 @@ App.js ——> main.js——> index.html(root)
 > 状态只是可读的,应该使用setCount替换它而不是修改它,直接修改不能引发视图更新
 ### useRef
 > useRef 获取当前元素绑定的dom对象 .current 属性
+### createContext 跨组件通信
+> 使用 createContext 创建组件能够提供与读取的 上下文（context） <br/>
+> 变量名首字母大写
+> 在使用的地方用useContext获取
+使用
+```jsx
+//  App->Communication03->Communication04
+// 在04中使用App中的属性
+export const MsgContext = createContext()
+const App = () => {
+    const [name,setName] = useState('')
+    const getMsg = (msg) => {
+        setName(msg)
+    }
+    return (
+        <div>
+            <MsgContext.Provider  value={name}>
+                <Communication03 name={name}/>
+            </MsgContext.Provider >
+        </div>
+    )
+}
+```
+```jsx
+const Communication03 = () => {
+    return (
+        <div>
+            this is communication 03.... <br/>
+            <Communication04/>
+        </div>
+    );
+};
+```
+```jsx
+const Communication04 = () => {
+    const msg = useContext(MsgContext)
+    return (
+        <div>
+            this is communication 04....{msg} <br/>
+
+        </div>
+    );
+};
+```
 ## 组件间的通信
 ### prop
 ```jsx

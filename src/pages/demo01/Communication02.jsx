@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
 
 // 组件间的通信
 const Communication02 = ({ onGetCommunication}) => {
-    const msg = 'this is communication msg'
+    const msg = 'test 小刘'
     return (
         <div>
            <button onClick={() => onGetCommunication(msg)}>点击</button>

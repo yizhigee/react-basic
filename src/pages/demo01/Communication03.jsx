@@ -1,10 +1,11 @@
 
-// 组件间的通信
-const Communication03 = ({ name}) => {
+import Communication04 from "./Communication04.jsx";
+
+const Communication03 = () => {
     return (
         <div>
-            <br/>
-           03-- {name}
+            this is communication 03.... <br/>
+            <Communication04/>
         </div>
     );
 };
