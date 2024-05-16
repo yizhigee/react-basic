@@ -25,7 +25,8 @@ App.js ——> main.js——> index.html(root)
 ### useState 状态变量
 > useState 状态变量
 > 状态只是可读的,应该使用setCount替换它而不是修改它,直接修改不能引发视图更新
-
+### useRef
+> useRef 获取当前元素绑定的dom对象 .current 属性
 ## 样式
 **class 得写成 className**
 ```html
@@ -36,5 +37,10 @@ App.js ——> main.js——> index.html(root)
 ## 相关工具库
 
 [lodash](https://www.lodashjs.com/)
+
 [classnames](https://github.com/JedWatson/classnames)
+
+[uuid](https://github.com/uuidjs/uuid)
+
+[dayjs](https://dayjs.fenxianglu.cn/)
 

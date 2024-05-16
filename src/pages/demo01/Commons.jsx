@@ -1,8 +1,10 @@
 import '../../App.scss'
 import avatar from '../../assets/images/bozai.png'
-import {useState} from "react";
+import {useRef, useState} from "react";
 import _ from 'lodash'
 import classNames from "classnames";
+import { v4 as uuidv4 } from 'uuid';
+import dayjs from "dayjs";
 /**
  * 评论列表的渲染和操作
  *
@@ -42,6 +44,8 @@ const tabs = [{type: 'hot', text: '最热'}, {type: 'time', text: '最新'},]
 const Commons = () => {
     const [commentList, setCommentList] = useState(_.orderBy(List,'like','desc'))
     const [tagState, setTagState] = useState('hot')
+    const [content, setContent] = useState('')
+    const inputRef = useRef(null)
     const handleDel = (rpid) => {
         setCommentList(commentList.filter(item => item.rpid !== rpid))
     }
@@ -54,6 +58,25 @@ const Commons = () => {
             setCommentList(_.orderBy(commentList,'ctime','desc'))
         }
         setTagState(type)
+    }
+    // useRef()
+    const handlePublish = () => {
+        setCommentList([
+            ...commentList,
+            {
+                rpid: uuidv4(),
+                user: {
+                    uid: '3608010511',
+                    avatar: '',
+                    uname: '许嵩',
+                },
+                content: content,
+                ctime: dayjs(new Date()).format('MM-DD hh:mm'),
+                like: 881,
+            }
+        ])
+        setContent('')
+        inputRef.current.focus()
     }
     return (<div className="app">
         {/* 导航 Tab */}
@@ -86,12 +109,15 @@ const Commons = () => {
                 <div className="reply-box-wrap">
                     {/* 评论框 */}
                     <textarea
+                        value={content}
+                        ref={inputRef}
+                        onChange={(e) => setContent(e.target.value)}
                         className="reply-box-textarea"
                         placeholder="发一条友善的评论"
                     />
                     {/* 发布按钮 */}
                     <div className="reply-box-send">
-                        <div className="send-text">发布</div>
+                        <div className="send-text" onClick={handlePublish}>发布</div>
                     </div>
                 </div>
             </div>
