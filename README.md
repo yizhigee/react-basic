@@ -71,6 +71,25 @@ const Communication04 = () => {
     );
 };
 ```
+### useEffect
+> 浏览器渲染完成之后执行，类似于vue中的mounted
+
+### StrictMode
+> 严格模式
+> 
+> 严格模式启用了以下仅在开发环境下有效的行为
+> 
+> 接口会渲染两次
+> 
+> 一些错误刚开始看的时候没什么问题，渲染多次则会发生问题，帮助发现错误
+
+![img_3.png](img_3.png)
+```jsx
+// main.js
+<StrictMode>
+  <App />
+</StrictMode>
+```
 ## 组件间的通信
 ### prop
 ```jsx
