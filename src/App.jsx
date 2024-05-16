@@ -1,17 +1,13 @@
-import './App.scss'
-import {useRef, useState} from "react";
+import Commons from "./pages/demo01/Commons.jsx";
+import GetRef from "./pages/demo01/GetRef.jsx";
 
 const App = () => {
-    const [value, setValue] =useState('')
-    const inputRef = useRef(null)
-    const showDom = () => {
-        console.log('show', inputRef)
-    }
+
     return (
         <div>
-            <input type="text" value={value} ref={inputRef} onChange={(e)=>setValue(e.target.value)} />
-            <br/>
-            <button onClick={showDom}>showDom</button>
+           <Commons/>
+            <hr/>
+            <GetRef/>
         </div>
     )
 }
