@@ -27,6 +27,38 @@ App.js ——> main.js——> index.html(root)
 > 状态只是可读的,应该使用setCount替换它而不是修改它,直接修改不能引发视图更新
 ### useRef
 > useRef 获取当前元素绑定的dom对象 .current 属性
+## 组件间的通信
+### prop
+```jsx
+// App
+const App = () => {
+    const name = 'this is xiao liu'
+    return (
+        <div>
+            <Communication name={name} child={<span>this is span</span>}>
+                <p>哈哈哈这是p</p>
+            </Communication>
+        </div>
+    )
+}
+```
+```jsx
+// Communication
+const Communication = (props) => {
+    return (
+        <div>
+            {props.name}
+            <br/>
+            jsx:{props.child}
+
+            {props.children}
+        </div>
+    );
+};
+```
+> 如果把内容嵌套在了子组件的标签中，父组件会自动在名为children的prop属性中接收该内容
+> ![img_2.png](img_2.png)
+
 ## 样式
 **class 得写成 className**
 ```html
