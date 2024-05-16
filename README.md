@@ -30,7 +30,7 @@ App.js ——> main.js——> index.html(root)
 ## 组件间的通信
 ### prop
 ```jsx
-// App
+// 父 -> App
 const App = () => {
     const name = 'this is xiao liu'
     return (
@@ -43,7 +43,7 @@ const App = () => {
 }
 ```
 ```jsx
-// Communication
+// 子 -> Communication
 const Communication = (props) => {
     return (
         <div>
@@ -56,8 +56,45 @@ const Communication = (props) => {
     );
 };
 ```
+
 > 如果把内容嵌套在了子组件的标签中，父组件会自动在名为children的prop属性中接收该内容
+
 > ![img_2.png](img_2.png)
+
+### 子传父
+```jsx
+// 子 -> Communication02
+const Communication02 = ({ onGetCommunication}) => {
+    const msg = 'this is communication msg'
+    return (
+        <div>
+            <button onClick={() => onGetCommunication(msg)}>点击</button>
+        </div>
+    );
+};
+```
+```jsx
+// 父 -> App
+const App = () => {
+    const getMsg = (msg) => {
+        console.log('app-msg', msg)
+        setContent(msg)
+    }
+    const [content,setContent] = useState('')
+    return (
+        <div>
+            {content}
+            <Communication02 onGetCommunication={getMsg}/>
+        </div>
+    )
+}
+```
+> 在子组件中调用父组件中的函数并传递参数
+
+
+
+
+
 
 ## 样式
 **class 得写成 className**
