@@ -1,11 +1,11 @@
-import UseEffectDemo1 from "./pages/demo01/UseEffectDemo1.jsx";
+import Commons from "./pages/demo01/Commons.jsx";
 
 
 const App = () => {
 
     return (
         <div>
-            <UseEffectDemo1/>
+            <Commons/>
         </div>
     )
 }
