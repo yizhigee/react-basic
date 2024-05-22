@@ -1,11 +1,11 @@
-import Commons from "./pages/demo01/Commons.jsx";
+import Redux01 from "./pages/demo03/Redux01.jsx";
 
 
 const App = () => {
 
     return (
         <div>
-            <Commons/>
+          <Redux01/>
         </div>
     )
 }
