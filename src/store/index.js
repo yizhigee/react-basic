@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit'
 import counterStore from "./modules/counterStore.js";
 // 导入子模块
-configureStore({
+const store = configureStore({
   reducer:{
     counter: counterStore
   }

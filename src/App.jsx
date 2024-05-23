@@ -1,11 +1,11 @@
-import Redux01 from "./pages/demo03/Redux01.jsx";
+import UseEffectDemo1 from "./pages/demo01/UseEffectDemo1.jsx";
 
 
 const App = () => {
 
     return (
         <div>
-          <Redux01/>
+          <UseEffectDemo1/>
         </div>
     )
 }
